@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>SA TECH — Rio Innovation Week</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 1200px;
+  }
+
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #0d0e15;
+    background-image: linear-gradient(180deg, #0d0e15 0%, #0d0e15 60%, #141726 100%);
+    color: #f5f6fa;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glow-a {
+    position: absolute;
+    top: -220px;
+    left: -260px;
+    width: 760px;
+    height: 760px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,63,251,0.42), transparent 70%);
+    filter: blur(10px);
+  }
+
+  .glow-b {
+    position: absolute;
+    bottom: -280px;
+    right: -240px;
+    width: 820px;
+    height: 820px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,123,251,0.38), transparent 70%);
+    filter: blur(10px);
+  }
+
+  .grid-field {
+    position: absolute;
+    inset: 0;
+    opacity: 0.55;
+    background-image:
+      linear-gradient(rgba(245,246,250,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,246,250,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, #000 0%, transparent 75%);
+            mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, #000 0%, transparent 75%);
+  }
+
+  .frame {
+    position: relative;
+    z-index: 1;
+    padding: 76px 84px 64px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #9b5cfb, #4f8bff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    flex: none;
+  }
+
+  .brand-name {
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    margin-top: 44px;
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: rgba(245,246,250,0.06);
+    border: 1px solid rgba(245,246,250,0.14);
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c7cadb;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2fdb72;
+    box-shadow: 0 0 0 4px rgba(47,219,114,0.22);
+  }
+
+  h1 {
+    margin-top: 26px;
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+  }
+
+  h1 .grad {
+    background: linear-gradient(90deg, #9b5cfb, #4f8bff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lede {
+    margin-top: 20px;
+    font-size: 22px;
+    line-height: 1.55;
+    color: #b3b6c4;
+    max-width: 620px;
+  }
+
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    margin-top: 90px;
+  }
+
+  .qr-wrap {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 30px 70px -25px rgba(0,0,0,0.6);
+    flex: none;
+  }
+
+  .qr-wrap img {
+    display: block;
+    width: 420px;
+    height: 420px;
+  }
+
+  .scan-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    max-width: 320px;
+  }
+
+  .scan-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .channels { display: flex; flex-direction: column; gap: 16px; }
+
+  .channel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 18px;
+    color: #d6d8e4;
+  }
+
+  .chip {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+
+  .chip.wa { background: rgba(47,219,114,0.16); color: #2fdb72; }
+  .chip.site { background: linear-gradient(135deg, rgba(155,92,251,0.22), rgba(79,139,255,0.22)); color: #a98bff; }
+  .chip.li { background: rgba(245,246,250,0.08); color: #f5f6fa; }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 84px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(245,246,250,0.12);
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #767a89;
+  }
+</style>
+</head>
+<body>
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+  <div class="grid-field"></div>
+
+  <div class="frame">
+    <div class="brand-row">
+      <div class="badge">SA</div>
+      <div class="brand-name">SA TECH</div>
+    </div>
+
+    <div class="eyebrow"><span class="dot"></span>Rio Innovation Week · 2026</div>
+
+    <h1>Vamos falar sobre <span class="grad">automação inteligente.</span></h1>
+    <p class="lede">Aponte a câmera do seu celular para o QR Code e escolha como prefere continuar a conversa com a SA TECH.</p>
+
+    <div class="stage">
+      <div class="qr-wrap">
+        <img src="data:image/png;base64,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AgAACIgrAACAgLgCAAAIiCsAAICAuAIAAAiIKwAAgIC4AgAACIgrAACAgLgCAAAIiCsAAICAuAIAAAhcpgfYyfV2nx6B/9COz3fHmVes3O/r+djuunxux2e04/l1Bj+34/M92zOasuPe4HO+XAEAAATEFQAAQEBcAQAABMQVAABAQFwBAAAExBUAAEBAXAEAAATEFQAAQEBcAQAABMQVAABAQFwBAAAExBUAAEBAXAEAAATEFQAAQEBcAQAABMQVAABAQFwBAAAExBUAAEBAXAEAAAR+3u/39AwAAADb8+UKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAgIK4AAAAC4goAACAgrgAAAALiCgAAICCuAAAAAuIKAAAg8H9+xamawW1hMQAAAABJRU5ErkJggg==" alt="QR Code SA TECH" />
+      </div>
+      <div class="scan-copy">
+        <div class="scan-title">Escaneie e escolha seu canal</div>
+        <div class="channels">
+          <div class="channel">
+            <span class="chip wa">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z" fill="currentColor"/><path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.08-1.33A9.96 9.96 0 0012.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.2c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-3.02.79.81-2.94-.21-.34a8.18 8.18 0 01-1.27-4.35c0-4.53 3.7-8.2 8.24-8.2 4.53 0 8.2 3.67 8.2 8.2 0 4.53-3.67 8.4-8.22 8.4z" fill="currentColor"/></svg>
+            </span>
+            WhatsApp
+          </div>
+          <div class="channel">
+            <span class="chip site">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3z" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            Site
+          </div>
+          <div class="channel">
+            <span class="chip li">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 10.2v6.3M7.5 7.7v.01M11.3 16.5v-3.6c0-1.4.9-2.3 2.1-2.3 1.2 0 1.9.8 1.9 2.3v3.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            LinkedIn
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Special Automation Tech</span>
+      <span>Rio de Janeiro, BR</span>
+    </div>
+  </div>
+</body>
+</html>
