@@ -1,0 +1,297 @@
+<title>SA TECH — Conecte-se</title>
+<style>
+  :root {
+    --bg: #f3f4fa;
+    --bg-elevated: #ffffff;
+    --panel-line: rgba(20, 21, 30, 0.12);
+    --ink: #15161d;
+    --ink-muted: #565a68;
+    --ink-faint: #868993;
+    --accent-1: #8b3ffb;
+    --accent-2: #3b7bfb;
+    --accent-ink: #ffffff;
+    --whatsapp: #22c55e;
+    --shadow: 0 1px 0 rgba(20,21,30,0.04);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101019;
+      --bg-elevated: #1a1b26;
+      --panel-line: rgba(245, 246, 250, 0.12);
+      --ink: #f5f6fa;
+      --ink-muted: #b3b6c4;
+      --ink-faint: #767a89;
+      --accent-1: #9b5cfb;
+      --accent-2: #4f8bff;
+      --accent-ink: #ffffff;
+      --whatsapp: #2fdb72;
+      --shadow: 0 1px 0 rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101019;
+    --bg-elevated: #1a1b26;
+    --panel-line: rgba(245, 246, 250, 0.12);
+    --ink: #f5f6fa;
+    --ink-muted: #b3b6c4;
+    --ink-faint: #767a89;
+    --accent-1: #9b5cfb;
+    --accent-2: #4f8bff;
+    --accent-ink: #ffffff;
+    --whatsapp: #2fdb72;
+    --shadow: 0 1px 0 rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"] {
+    --bg: #f3f4fa;
+    --bg-elevated: #ffffff;
+    --panel-line: rgba(20, 21, 30, 0.12);
+    --ink: #15161d;
+    --ink-muted: #565a68;
+    --ink-faint: #868993;
+    --accent-1: #8b3ffb;
+    --accent-2: #3b7bfb;
+    --accent-ink: #ffffff;
+    --whatsapp: #22c55e;
+    --shadow: 0 1px 0 rgba(20,21,30,0.04);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .grid-field {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.5;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--panel-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--panel-line) 1px, transparent 1px);
+    background-size: 34px 34px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 38%, #000 0%, transparent 72%);
+            mask-image: radial-gradient(ellipse 70% 55% at 50% 38%, #000 0%, transparent 72%);
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--panel-line);
+    border-radius: 18px;
+    padding: 36px 30px 30px;
+    box-shadow: var(--shadow), 0 20px 60px -30px rgba(0,0,0,0.5);
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 22px;
+  }
+
+  .signal-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--whatsapp);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--whatsapp) 22%, transparent);
+    flex: none;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.82); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .signal-dot { animation: none; }
+  }
+
+  .wordmark {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 9vw, 44px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .wordmark span {
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .subline {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    max-width: 34ch;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--panel-line);
+    text-decoration: none;
+    color: var(--ink);
+    background: transparent;
+    transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
+  }
+
+  .link-btn:hover {
+    border-color: color-mix(in srgb, var(--accent-2) 55%, var(--panel-line));
+    background: linear-gradient(90deg, color-mix(in srgb, var(--accent-1) 8%, transparent), color-mix(in srgb, var(--accent-2) 8%, transparent));
+  }
+
+  .link-btn:active { transform: scale(0.99); }
+
+  .link-btn:focus-visible {
+    outline: 2px solid var(--accent-2);
+    outline-offset: 2px;
+  }
+
+  .link-btn.primary {
+    background: var(--whatsapp);
+    border-color: var(--whatsapp);
+    color: var(--accent-ink);
+  }
+
+  .link-btn.primary:hover { background: var(--whatsapp); filter: brightness(1.06); }
+
+  .link-btn.gradient {
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    border-color: transparent;
+    color: var(--accent-ink);
+  }
+
+  .link-btn.gradient:hover { filter: brightness(1.08); background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); }
+  .link-btn.gradient .link-meta { color: rgba(255,255,255,0.8); }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+
+  .link-copy { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+
+  .link-title { font-size: 14.5px; font-weight: 600; }
+
+  .link-meta {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .link-btn.primary .link-meta { color: color-mix(in srgb, var(--accent-ink) 75%, transparent); }
+
+  .arrow { margin-left: auto; flex: none; opacity: 0.5; }
+
+  .footer {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid var(--panel-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+</style>
+
+<div class="grid-field" aria-hidden="true"></div>
+
+<main class="card">
+  <p class="eyebrow"><span class="signal-dot" aria-hidden="true"></span>Rio Innovation Week · 2026</p>
+
+  <h1 class="wordmark">SA<span>·</span>TECH</h1>
+  <p class="subline">Special Automation Tech. Escolha um canal para continuar a conversa.</p>
+
+  <nav class="links" aria-label="Canais de contato">
+    <a class="link-btn primary" href="https://wa.me/5521920453995?text=Ol%C3%A1%21%20Vim%20da%20Rio%20Innovation%20Week%20%F0%9F%91%8B" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z" fill="currentColor"/>
+        <path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.08-1.33A9.96 9.96 0 0012.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.2c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-3.02.79.81-2.94-.21-.34a8.18 8.18 0 01-1.27-4.35c0-4.53 3.7-8.2 8.24-8.2 4.53 0 8.2 3.67 8.2 8.2 0 4.53-3.67 8.4-8.22 8.4z" fill="currentColor"/>
+      </svg>
+      <span class="link-copy">
+        <span class="link-title">Chamar no WhatsApp</span>
+        <span class="link-meta">+55 21 92045-3995</span>
+      </span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link-btn gradient" href="https://specialautomation.brazio.tech/" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M3 12h18M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3z" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      <span class="link-copy">
+        <span class="link-title">Visitar o site</span>
+        <span class="link-meta">specialautomation.brazio.tech</span>
+      </span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link-btn" href="https://www.linkedin.com/company/specialautomationtech" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M7.5 10.2v6.3M7.5 7.7v.01M11.3 16.5v-3.6c0-1.4.9-2.3 2.1-2.3 1.2 0 1.9.8 1.9 2.3v3.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="link-copy">
+        <span class="link-title">Seguir no LinkedIn</span>
+        <span class="link-meta">/company/specialautomationtech</span>
+      </span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </nav>
+
+  <div class="footer">
+    <span>SA Tech</span>
+    <span>Rio de Janeiro, BR</span>
+  </div>
+</main>

@@ -1,7 +1,7 @@
 import qrcode
 from qrcode.constants import ERROR_CORRECT_H
 
-url = "https://claude.ai/code/artifact/71efed19-774b-432e-adcf-6402d845964c"
+url = "https://sa-tech-welcome.vercel.app/"
 
 qr = qrcode.QRCode(
     version=None,
