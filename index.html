@@ -253,6 +253,34 @@
   .link-btn.gradient:hover { filter: brightness(1.08); background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); }
   .link-btn.gradient .link-meta { color: rgba(255,255,255,0.8); }
 
+  .link-btn.team {
+    padding: 11px 16px;
+    background: transparent;
+    border-color: var(--panel-line);
+  }
+
+  .link-btn.team:hover {
+    border-color: color-mix(in srgb, var(--whatsapp) 55%, var(--panel-line));
+    background: color-mix(in srgb, var(--whatsapp) 8%, transparent);
+  }
+
+  .link-btn.team .icon { color: var(--whatsapp); }
+
+  .team-label {
+    margin: 0 0 -2px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .team-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .icon {
     width: 20px;
     height: 20px;
@@ -307,18 +335,45 @@
   <h1 class="wordmark">SA<span>·</span>TECH</h1>
   <p class="subline" data-i18n="subline">Special Automation Tech. Escolha um canal para continuar a conversa.</p>
 
-  <nav class="links" data-i18n="navLabel" aria-label="Canais de contato">
-    <a class="link-btn primary" data-role="wa-link" href="https://wa.me/5521920453995?text=Ol%C3%A1%21%20Vim%20da%20Rio%20Innovation%20Week%20%F0%9F%91%8B" target="_blank" rel="noopener">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z" fill="currentColor"/>
-        <path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.08-1.33A9.96 9.96 0 0012.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.2c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-3.02.79.81-2.94-.21-.34a8.18 8.18 0 01-1.27-4.35c0-4.53 3.7-8.2 8.24-8.2 4.53 0 8.2 3.67 8.2 8.2 0 4.53-3.67 8.4-8.22 8.4z" fill="currentColor"/>
-      </svg>
-      <span class="link-copy">
-        <span class="link-title" data-role="wa-title">Chamar no WhatsApp</span>
-        <span class="link-meta">+55 21 92045-3995</span>
-      </span>
-      <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+  <nav class="links" aria-label="Canais de contato">
+    <p class="team-label" data-i18n="teamLabel">Fale com a equipe no WhatsApp</p>
+    <div class="team-links">
+      <a class="link-btn team" data-role="wa-link-isabelle" href="https://wa.me/5521920453995?text=Ol%C3%A1%21%20Vim%20da%20Rio%20Innovation%20Week%20%F0%9F%91%8B" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z" fill="currentColor"/>
+          <path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.08-1.33A9.96 9.96 0 0012.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.2c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-3.02.79.81-2.94-.21-.34a8.18 8.18 0 01-1.27-4.35c0-4.53 3.7-8.2 8.24-8.2 4.53 0 8.2 3.67 8.2 8.2 0 4.53-3.67 8.4-8.22 8.4z" fill="currentColor"/>
+        </svg>
+        <span class="link-copy">
+          <span class="link-title">Isabelle</span>
+          <span class="link-meta">+55 21 92045-3995</span>
+        </span>
+        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <a class="link-btn team" data-role="wa-link-marcelo" href="https://wa.me/5521964820496?text=Ol%C3%A1%21%20Vim%20da%20Rio%20Innovation%20Week%20%F0%9F%91%8B" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z" fill="currentColor"/>
+          <path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.08-1.33A9.96 9.96 0 0012.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.2c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-3.02.79.81-2.94-.21-.34a8.18 8.18 0 01-1.27-4.35c0-4.53 3.7-8.2 8.24-8.2 4.53 0 8.2 3.67 8.2 8.2 0 4.53-3.67 8.4-8.22 8.4z" fill="currentColor"/>
+        </svg>
+        <span class="link-copy">
+          <span class="link-title">Marcelo</span>
+          <span class="link-meta">+55 21 96482-0496</span>
+        </span>
+        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <a class="link-btn team" data-role="wa-link-iohana" href="https://wa.me/5521981561970?text=Ol%C3%A1%21%20Vim%20da%20Rio%20Innovation%20Week%20%F0%9F%91%8B" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z" fill="currentColor"/>
+          <path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.08-1.33A9.96 9.96 0 0012.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.2c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-3.02.79.81-2.94-.21-.34a8.18 8.18 0 01-1.27-4.35c0-4.53 3.7-8.2 8.24-8.2 4.53 0 8.2 3.67 8.2 8.2 0 4.53-3.67 8.4-8.22 8.4z" fill="currentColor"/>
+        </svg>
+        <span class="link-copy">
+          <span class="link-title">Iohana</span>
+          <span class="link-meta">+55 21 98156-1970</span>
+        </span>
+        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
 
     <a class="link-btn gradient" href="https://specialautomation.brazio.tech/" target="_blank" rel="noopener">
       <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -356,8 +411,7 @@
     pt: {
       lang: "pt-BR",
       subline: "Special Automation Tech. Escolha um canal para continuar a conversa.",
-      navLabel: "Canais de contato",
-      waTitle: "Chamar no WhatsApp",
+      teamLabel: "Fale com a equipe no WhatsApp",
       waText: "Olá! Vim da Rio Innovation Week 👋",
       siteTitle: "Visitar o site",
       liTitle: "Seguir no LinkedIn"
@@ -365,24 +419,30 @@
     en: {
       lang: "en",
       subline: "Special Automation Tech. Pick a channel to keep the conversation going.",
-      navLabel: "Contact channels",
-      waTitle: "Message on WhatsApp",
+      teamLabel: "Message the team on WhatsApp",
       waText: "Hi! I'm visiting from Rio Innovation Week 👋",
       siteTitle: "Visit the website",
       liTitle: "Follow on LinkedIn"
     }
   };
 
+  var waNumbers = {
+    isabelle: "5521920453995",
+    marcelo: "5521964820496",
+    iohana: "5521981561970"
+  };
+
   function setLang(lang) {
     var t = translations[lang] || translations.pt;
     document.documentElement.lang = t.lang;
     document.querySelector('[data-i18n="subline"]').textContent = t.subline;
-    document.querySelector('[data-i18n="navLabel"]').setAttribute('aria-label', t.navLabel);
-    document.querySelector('[data-role="wa-title"]').textContent = t.waTitle;
+    document.querySelector('[data-i18n="teamLabel"]').textContent = t.teamLabel;
     document.querySelector('[data-role="site-title"]').textContent = t.siteTitle;
     document.querySelector('[data-role="li-title"]').textContent = t.liTitle;
-    document.querySelector('[data-role="wa-link"]').href =
-      'https://wa.me/5521920453995?text=' + encodeURIComponent(t.waText);
+    Object.keys(waNumbers).forEach(function (person) {
+      document.querySelector('[data-role="wa-link-' + person + '"]').href =
+        'https://wa.me/' + waNumbers[person] + '?text=' + encodeURIComponent(t.waText);
+    });
     document.querySelectorAll('.lang-toggle button').forEach(function (btn) {
       var active = btn.dataset.lang === lang;
       btn.classList.toggle('active', active);
