@@ -154,18 +154,20 @@
     gap: 2.4mm;
   }
 
+  /* logo em branco: o símbolo é uma placa branca sólida com as iniciais
+     recortadas na cor do fundo do cartão */
   .badge {
     width: 7.4mm;
     height: 7.4mm;
     border-radius: 2.1mm;
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 8pt;
     font-weight: 800;
     letter-spacing: -0.02em;
-    color: #ffffff;
+    color: var(--bg-deep);
     flex: none;
   }
 
@@ -179,10 +181,7 @@
 
   .wordmark i {
     font-style: normal;
-    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: rgba(255, 255, 255, 0.6);
   }
 
   .locale {

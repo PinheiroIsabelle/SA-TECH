@@ -4,6 +4,11 @@ Cartões de frente e verso para Isabelle, Marcelo e Iohana, no mesmo sistema vis
 da landing page e do pôster do evento (gradiente `#8b3ffb → #3b7bfb`, fundo
 `#0d0e15`, wordmark `SA·TECH`).
 
+A logo entra em **branco**, sem gradiente: na frente, placa branca com as iniciais
+recortadas na cor do fundo, ao lado do wordmark; no verso, o wordmark branco
+centralizado. O gradiente fica só no fundo e nos detalhes (régua sob o nome e
+ícones de contato).
+
 ![Frente e verso](preview.png)
 
 ## Arquivos
