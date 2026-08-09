@@ -1,13 +1,24 @@
 # Cartões de visita SA·TECH
 
-Cartões de frente e verso para Isabelle, Marcelo e Iohana, no mesmo sistema visual
-da landing page e do pôster do evento (gradiente `#8b3ffb → #3b7bfb`, fundo
-`#0d0e15`, wordmark `SA·TECH`).
+Cartões de frente e verso para Isabelle, Marcelo e Iohana, com o logotipo oficial
+da SA Tech sobre o fundo da landing page e do pôster do evento (gradiente
+`#8b3ffb → #3b7bfb` sobre `#0d0e15`).
 
-A logo entra em **branco**, sem gradiente: na frente, placa branca com as iniciais
-recortadas na cor do fundo, ao lado do wordmark; no verso, o wordmark branco
-centralizado. O gradiente fica só no fundo e nos detalhes (régua sob o nome e
-ícones de contato).
+A logo usada é a **versão reversa (branca)** do logotipo oficial — a mesma que o
+manual de marca (`../SA-Tech-Design-System.docx`, seção 2) prevê para fundos
+escuros. Ela foi extraída da arte colorida do manual: o fundo claro virou
+transparente e a tinta virou branca, preservando o traçado de circuito do símbolo,
+a órbita e os pontos. O arquivo está em `logo-sa-tech-branca.png` (PNG com
+transparência, 1054 × 483 px).
+
+Regras do manual aplicadas:
+
+- **Tamanho mínimo em impresso: 3 cm de largura.** Frente com 30 mm, verso com 46 mm.
+- **Área de proteção** equivalente à altura da caixa alta do wordmark (4,1 mm na
+  frente, 6,2 mm no verso): nenhum elemento nem a linha de corte invade essa folga.
+- Reversa branca sobre fundo escuro/saturado — o manual proíbe a versão colorida
+  sobre o gradiente saturado, que é o caso do verso.
+- Sem sombra, contorno, distorção ou recolorização do gradiente do símbolo.
 
 ![Frente e verso](preview.png)
 
@@ -19,6 +30,7 @@ centralizado. O gradiente fica só no fundo e nos detalhes (régua sob o nome e
 | `cartao-visita.html` | Fonte editável. Fontes embutidas — abre igual em qualquer máquina, sem internet. |
 | `gerar-pdf.py` | Regera o PDF e o `preview.png` a partir do HTML. |
 | `preview.png` | Prévia da frente e do verso em 300 dpi. |
+| `logo-sa-tech-branca.png` | Logo oficial na versão reversa (branca), com transparência. |
 
 ## Especificação para a gráfica
 
@@ -73,6 +85,17 @@ Inter (nomes e contatos) e IBM Plex Mono (as linhas em caixa alta), ambas sob a
 SIL Open Font License — uso comercial e incorporação liberados. Vão embutidas em
 base64 no HTML, então o arquivo abre igual em qualquer máquina e o PDF não
 depende de nenhuma fonte instalada na gráfica.
+
+## Pendências em relação ao manual de marca
+
+O cartão nasceu antes do manual chegar e ainda diverge dele em dois pontos, que
+valem uma decisão antes de mandar imprimir:
+
+- **Paleta.** O cartão usa o roxo-azul da landing page e do pôster do evento
+  (`#8b3ffb → #3b7bfb`). O manual define Azul SA Tech `#071C89` e Magenta SA Tech
+  `#B910C3`, com gradiente de marca `#0B1B72 → #A31DBF`.
+- **Tipografia.** O manual pede Poppins para títulos e Inter para texto. O cartão
+  usa Inter e IBM Plex Mono — o mono não consta do manual.
 
 ## Regerar o PDF
 
