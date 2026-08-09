@@ -1,8 +1,16 @@
 # Cartões de visita SA·TECH
 
-Cartões de frente e verso para Isabelle, Marcelo e Iohana, com o logotipo oficial
-da SA Tech sobre o fundo da landing page e do pôster do evento (gradiente
-`#8b3ffb → #3b7bfb` sobre `#0d0e15`).
+Cartões de frente e verso para Isabelle, Marcelo e Iohana, seguindo o manual de
+marca (`../SA-Tech-Design-System.docx`).
+
+- **Frente**: fundo em Azul SA Tech `#071C89` com texto branco e acento em Magenta
+  `#B910C3` — a aplicação que o manual descreve na seção 7 para peças de destaque.
+  O magenta entra como brilho no canto superior e na régua sob o nome, ficando na
+  faixa de 10% da regra 60‑30‑10.
+- **Verso**: gradiente de marca `#0B1B72 → #A31DBF` na diagonal de 45°, com a logo
+  sozinha no centro.
+- **Tipografia**: Poppins Bold nos nomes e Inter nos contatos e legendas, como
+  manda a seção 4.
 
 A logo usada é a **versão reversa (branca)** do logotipo oficial — a mesma que o
 manual de marca (`../SA-Tech-Design-System.docx`, seção 2) prevê para fundos
@@ -41,20 +49,25 @@ Regras do manual aplicadas:
 | Página do PDF | 96 × 56 mm (já com a sangria) |
 | Área de segurança | 5 mm a partir da linha de corte |
 | Páginas | 6 — pares frente/verso: 1‑2 Isabelle, 3‑4 Marcelo, 5‑6 Iohana |
-| Cores | RGB (converter para CMYK no fluxo da gráfica) |
+| Cores | RGB (converter para CMYK no fluxo da gráfica) — ver a nota sobre o azul abaixo |
 | Marcas de corte | Não incluídas — a arte já vem com sangria, a gráfica aplica o corte |
 
 O verso é idêntico nos três cartões, então dá para fechar como **um verso único**
 para toda a tiragem, se a gráfica cobrar por face.
 
-### Dois pontos que valem avisar na hora do orçamento
+### O que vale avisar na hora do orçamento
 
-- **Muita cobertura de tinta.** As duas faces são chapadas: frente escura e verso
-  em gradiente vivo. Em impressão digital barata isso costuma dar marcas de
-  rolete e banding no gradiente. Peça uma **prova impressa** antes de fechar a
+- **Muita cobertura de tinta.** As duas faces são chapadas: frente em azul sólido
+  e verso em gradiente vivo. Em impressão digital barata isso costuma dar marcas
+  de rolete e banding no gradiente. Peça uma **prova impressa** antes de fechar a
   tiragem.
+- **Azul e magenta são cores RGB saturadas.** Azul SA Tech `#071C89` e Magenta
+  `#B910C3` ficam fora do gamut CMYK: na conversão o azul tende a fechar e o
+  magenta a perder brilho. É o motivo mais forte para pedir a prova impressa — e,
+  se o resultado não agradar, vale perguntar à gráfica sobre uma cor especial
+  (Pantone) para o azul.
 - **Acabamento.** Laminação fosca disfarça marcas de dedo no fundo escuro e é a
-  escolha mais segura aqui. Verniz localizado no wordmark do verso fica muito
+  escolha mais segura aqui. Verniz localizado sobre a logo do verso fica muito
   bom, mas encarece.
 
 Papel sugerido: couché fosco 300 g ou 350 g.
@@ -81,21 +94,14 @@ comeria a sangria); quem tira essa folga é o `gerar-pdf.py`.
 
 ## Fontes
 
-Inter (nomes e contatos) e IBM Plex Mono (as linhas em caixa alta), ambas sob a
-SIL Open Font License — uso comercial e incorporação liberados. Vão embutidas em
+Poppins Bold (nomes) e Inter (contatos e legendas), as duas do manual, ambas sob
+a SIL Open Font License — uso comercial e incorporação liberados. Vão embutidas em
 base64 no HTML, então o arquivo abre igual em qualquer máquina e o PDF não
 depende de nenhuma fonte instalada na gráfica.
 
-## Pendências em relação ao manual de marca
-
-O cartão nasceu antes do manual chegar e ainda diverge dele em dois pontos, que
-valem uma decisão antes de mandar imprimir:
-
-- **Paleta.** O cartão usa o roxo-azul da landing page e do pôster do evento
-  (`#8b3ffb → #3b7bfb`). O manual define Azul SA Tech `#071C89` e Magenta SA Tech
-  `#B910C3`, com gradiente de marca `#0B1B72 → #A31DBF`.
-- **Tipografia.** O manual pede Poppins para títulos e Inter para texto. O cartão
-  usa Inter e IBM Plex Mono — o mono não consta do manual.
+Uma observação: os ícones de contato são brancos, inclusive o do WhatsApp. O verde
+da plataforma não existe na paleta, e sobre o azul sólido o branco é o equivalente
+ao "Azul SA Tech como padrão" que o manual define para fundos claros.
 
 ## Regerar o PDF
 
