@@ -3,14 +3,15 @@
 Cartões de frente e verso para Isabelle, Marcelo e Iohana, seguindo o manual de
 marca (`../SA-Tech-Design-System.docx`).
 
-- **Frente**: fundo em Azul SA Tech `#071C89` com texto branco e acento em Magenta
-  `#B910C3` — a aplicação que o manual descreve na seção 7 para peças de destaque.
-  O magenta entra como brilho no canto superior e na régua sob o nome, ficando na
-  faixa de 10% da regra 60‑30‑10.
-- **Verso**: gradiente de marca `#0B1B72 → #A31DBF` na diagonal de 45°, com a logo
-  sozinha no centro.
+- **Frente**: fundo em Azul SA Tech com texto branco e acento em Magenta — a
+  aplicação que o manual descreve na seção 7 para peças de destaque. O magenta
+  entra como brilho no canto superior e na régua sob o nome, ficando na faixa de
+  10% da regra 60‑30‑10.
+- **Verso**: gradiente de marca na diagonal de 45°, com a logo sozinha no centro.
 - **Tipografia**: Poppins Bold nos nomes e Inter nos contatos e legendas, como
   manda a seção 4.
+- **Cores**: convertidas para os equivalentes mais próximos que a impressão em
+  CMYK alcança — veja a seção *Cores* abaixo.
 
 A logo usada é a **versão reversa (branca)** do logotipo oficial — a mesma que o
 manual de marca (`../SA-Tech-Design-System.docx`, seção 2) prevê para fundos
@@ -61,16 +62,69 @@ para toda a tiragem, se a gráfica cobrar por face.
   e verso em gradiente vivo. Em impressão digital barata isso costuma dar marcas
   de rolete e banding no gradiente. Peça uma **prova impressa** antes de fechar a
   tiragem.
-- **Azul e magenta são cores RGB saturadas.** Azul SA Tech `#071C89` e Magenta
-  `#B910C3` ficam fora do gamut CMYK: na conversão o azul tende a fechar e o
-  magenta a perder brilho. É o motivo mais forte para pedir a prova impressa — e,
-  se o resultado não agradar, vale perguntar à gráfica sobre uma cor especial
-  (Pantone) para o azul.
+- **As cores já estão dentro do gamut CMYK.** Não há surpresa na conversão: a
+  arte inteira foi provada contra o PSO Coated v3 e o desvio máximo é ΔE 2.8
+  (detalhes na seção *Cores*). Ainda assim, peça a prova — ela serve para conferir
+  o gradiente e a cobertura, não a cor.
 - **Acabamento.** Laminação fosca disfarça marcas de dedo no fundo escuro e é a
   escolha mais segura aqui. Verniz localizado sobre a logo do verso fica muito
   bom, mas encarece.
 
 Papel sugerido: couché fosco 300 g ou 350 g.
+
+## Cores
+
+O manual define Azul SA Tech `#071C89` e Magenta SA Tech `#B910C3`. As duas são
+cores de tela e **não existem em CMYK** — nenhuma combinação de tinta chega nelas.
+Mandar esses valores para a gráfica significa deixar a conversão por conta dela e
+receber algo que ninguém escolheu.
+
+Então o cartão usa, para cada cor da marca, a cor imprimível mais próxima. A
+escolha foi feita por medição: busca no espaço CMYK pelo menor ΔE contra a cor do
+manual, usando o perfil **PSO Coated v3 (FOGRA51)**, que é o padrão para papel
+couché. O ISO Coated v2 300% (FOGRA39) dá praticamente o mesmo resultado.
+
+| Cor do manual | Receita de tinta | Fica | Tinta | ΔE |
+| --- | --- | --- | --- | --- |
+| Azul SA Tech `#071C89` | **C100 M100 Y0 K0** | `#3A3586` | 200% | 21,7 |
+| Magenta SA Tech `#B910C3` | **C40 M100 Y0 K0** | `#A42783` | 140% | 34,4 |
+| Gradiente, início `#0B1B72` | **C100 M100 Y0 K0** | `#3A3586` | 200% | 13,5 |
+| Gradiente, fim `#A31DBF` | **C55 M100 Y0 K0** | `#8B2C84` | 155% | 32,1 |
+
+Tons auxiliares, derivados do azul: escurecimento das bordas **C100 M100 Y0 K40**
+(`#312D63`) e o topo do gradiente do fundo **C90 M90 Y0 K0** (`#473E8D`).
+
+O ΔE alto do magenta é inevitável: `#B910C3` é um roxo-magenta muito saturado, e
+CMYK simplesmente não chega lá. Se esse magenta exato for inegociável, o caminho
+é uma **cor especial (Pantone)** como quinta tinta — o que muda o orçamento.
+
+**A régua sob o nome é a exceção.** O magenta imprimível (`#A42783`) tem contraste
+de só 1,6:1 contra o azul de fundo: impresso, o traço sumiria. Ela usa
+**C20 M80 Y0 K0** (`#C85398`), um magenta mais claro, que sobe o contraste para
+2,5:1 e deixa o traço visível. É uma escolha de legibilidade, não de fidelidade.
+
+### Verificações
+
+- **Gamut**: prova da arte inteira contra o PSO Coated v3 — desvio médio ΔE 1,4 e
+  máximo 2,8 na frente; 0,8 e 1,9 no verso. Na prática, o que está na tela é o que
+  sai impresso.
+- **Cobertura de tinta**: máximo de 218% na frente e 202% no verso, com folga
+  larga para o limite de 300% do couché.
+- **Contraste**, medido sobre o fundo já composto: nome em branco a 10,2:1,
+  contatos a 7,4:1, legendas a 5,4:1 — todos acima do mínimo de acessibilidade
+  para texto pequeno. A régua magenta fica em 2,5:1, suficiente para um traço
+  cheio.
+
+### Sobre entregar em CMYK
+
+O PDF sai em RGB de propósito. A conversão para CMYK é melhor feita pela gráfica,
+com o perfil da máquina e do papel dela. Como as cores já estão dentro do gamut,
+essa conversão é praticamente sem perda — e a tabela acima diz exatamente que
+tinta cada cor deve virar, então dá para conferir o resultado.
+
+Se a gráfica exigir o arquivo já em CMYK, peça — não converta com ferramenta
+genérica. O Ghostscript, por exemplo, ignora o perfil informado e contamina o azul
+com 11% de amarelo, sujando a cor.
 
 ## Como editar
 

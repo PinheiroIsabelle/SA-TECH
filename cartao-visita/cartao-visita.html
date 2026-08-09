@@ -29,12 +29,21 @@
   }
 
   :root {
-    /* Paleta do manual de marca (seção 3). O cartão é a aplicação de
-       "fundo em Azul SA Tech sólido com texto branco e acentos em Magenta". */
-    --azul: #071C89;        /* Azul SA Tech — cor de destaque principal */
-    --magenta: #B910C3;     /* Magenta SA Tech — acento, ponto focal */
-    --grad-ini: #0B1B72;    /* gradiente de marca, início */
-    --grad-fim: #A31DBF;    /* gradiente de marca, fim */
+    /* Paleta do manual de marca (seção 3), convertida para as cores mais
+       próximas que a impressão em CMYK alcança. Perfil de referência:
+       PSO Coated v3 (FOGRA51), papel couché. O valor entre parênteses é a
+       receita de tinta — é ela que a gráfica precisa reproduzir.
+         Azul SA Tech    #071C89  ->  C100 M100 Y0 K0
+         Magenta SA Tech #B910C3  ->  C40  M100 Y0 K0
+         Gradiente       #0B1B72 → #A31DBF  ->  C100 M100 Y0 K0 → C55 M100 Y0 K0 */
+    --azul: #3A3586;          /* C100 M100 Y0 K0  · tinta 200% */
+    --azul-escuro: #343071;   /* C100 M100 Y0 K25 · tinta 225% */
+    --azul-claro: #473E8D;    /* C90  M90  Y0 K0  · tinta 180% */
+    --azul-borda: #312D63;    /* C100 M100 Y0 K40 · tinta 240% — escurecimento das bordas */
+    --magenta: #C85398;       /* C20  M80  Y0 K0  · tinta 100% — régua de acento */
+    --magenta-puro: #A42783;  /* C40  M100 Y0 K0  · tinta 140% — brilhos */
+    --grad-ini: #3A3586;      /* C100 M100 Y0 K0 */
+    --grad-fim: #8B2C84;      /* C55  M100 Y0 K0 */
 
     /* neutros sobre fundo escuro: o branco do manual em graus de opacidade */
     --ink: #ffffff;
@@ -101,7 +110,7 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(150deg, #061672 0%, var(--azul) 55%, #0A22A0 100%);
+    background: linear-gradient(150deg, var(--azul-escuro) 0%, var(--azul) 58%, var(--azul-claro) 100%);
   }
 
   .glow {
@@ -116,7 +125,7 @@
     left: -18mm;
     width: 58mm;
     height: 58mm;
-    background: radial-gradient(circle, rgba(185, 16, 195, 0.42) 0%, rgba(185, 16, 195, 0.16) 44%, rgba(185, 16, 195, 0) 72%);
+    background: radial-gradient(circle, rgba(164, 39, 131, 0.55) 0%, rgba(164, 39, 131, 0.2) 44%, rgba(164, 39, 131, 0) 72%);
   }
 
   .glow-b {
@@ -124,7 +133,7 @@
     right: -20mm;
     width: 64mm;
     height: 64mm;
-    background: radial-gradient(circle, rgba(163, 29, 191, 0.3) 0%, rgba(163, 29, 191, 0.11) 44%, rgba(163, 29, 191, 0) 72%);
+    background: radial-gradient(circle, rgba(139, 44, 132, 0.42) 0%, rgba(139, 44, 132, 0.15) 44%, rgba(139, 44, 132, 0) 72%);
   }
 
   .grid-field {
@@ -142,7 +151,7 @@
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: radial-gradient(ellipse 74% 66% at 46% 40%, rgba(3, 8, 48, 0) 0%, rgba(3, 8, 48, 0.3) 66%, rgba(3, 8, 48, 0.62) 100%);
+    background: radial-gradient(ellipse 74% 66% at 46% 40%, rgba(49, 45, 99, 0) 0%, rgba(49, 45, 99, 0.5) 66%, rgba(49, 45, 99, 0.97) 100%);
   }
 
   /* ---------- cabeçalho ---------- */
@@ -260,7 +269,7 @@
   }
 
   .card.back .vignette {
-    background: radial-gradient(ellipse 74% 68% at 50% 50%, rgba(6, 8, 46, 0) 0%, rgba(6, 8, 46, 0.14) 62%, rgba(6, 8, 46, 0.34) 100%);
+    background: radial-gradient(ellipse 74% 68% at 50% 50%, rgba(49, 45, 99, 0) 0%, rgba(49, 45, 99, 0.14) 62%, rgba(49, 45, 99, 0.32) 100%);
   }
 
   .card.back .inner {
