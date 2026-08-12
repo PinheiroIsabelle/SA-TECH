@@ -13,8 +13,8 @@ Por que este script existe em vez de um simples "imprimir para PDF":
      transformação no fluxo de conteúdo desloca os padrões de gradiente do
      Chromium e cria artefatos visíveis na arte.
 
-No fim o script confere página por página se a medida bate e se a sangria chega
-aos quatro cantos, e regenera preview.png.
+No fim o script confere página por página se a medida bate e se o fundo chega às
+quatro bordas, e regenera preview.png.
 
 Uso:
     python3 gerar-pdf.py
@@ -45,6 +45,7 @@ PAGE_W = (TRIM_W + BLEED * 2) * MM    # 96 mm
 PAGE_H = (TRIM_H + BLEED * 2) * MM    # 56 mm
 
 TOLERANCE_MM = 0.1
+BLEED_TOLERANCE = 4      # diferença de cor aceitável entre canto e miolo (0-255)
 PREVIEW_DPI = 300
 
 CHROME_CANDIDATES = [
@@ -110,6 +111,37 @@ def crop_to_card(raw_pdf: Path) -> None:
     writer.write(str(OUTPUT))
 
 
+def bleed_gap(img: Image.Image) -> int:
+    """Maior diferença entre a cor de cada canto e a do fundo 4 mm adentro.
+
+    Se o fundo chega à borda, o canto tem a mesma cor que o miolo ao lado dele.
+    Se faltar sangria, o canto vira o branco do papel e a diferença aparece.
+
+    Usa a mediana de uma mancha de 2 mm, não a média: a malha de fundo é feita de
+    linhas de 0,16 mm, e a média de uma mancha pequena oscila conforme as linhas
+    caem dentro ou fora dela. A mediana devolve a cor do fundo e ignora as linhas.
+
+    Vale um aviso: num cartão de fundo branco este teste não prova nada, porque a
+    falta de sangria é da mesma cor do papel. Ele existe para os fundos com cor —
+    aqui, o verso.
+    """
+    w, h = img.size
+    patch = max(2, round(2.0 / 25.4 * PREVIEW_DPI))    # 2 mm
+    inset = round(4.0 / 25.4 * PREVIEW_DPI)            # 4 mm, além da sangria
+
+    def mediana(x: int, y: int) -> tuple[int, ...]:
+        px = list(img.crop((x, y, x + patch, y + patch)).getdata())
+        return tuple(sorted(c[i] for c in px)[len(px) // 2] for i in range(3))
+
+    pior = 0
+    for cx, cy, dx, dy in ((0, 0, 1, 1), (w - patch, 0, -1, 1),
+                           (0, h - patch, 1, -1), (w - patch, h - patch, -1, -1)):
+        canto = mediana(cx, cy)
+        dentro = mediana(cx + dx * inset, cy + dy * inset)
+        pior = max(pior, max(abs(a - b) for a, b in zip(canto, dentro)))
+    return pior
+
+
 def verify_and_preview() -> None:
     reader = PdfReader(str(OUTPUT))
     pdf = pdfium.PdfDocument(str(OUTPUT))
@@ -123,11 +155,13 @@ def verify_and_preview() -> None:
 
         img = page.render(scale=PREVIEW_DPI / 72).to_pil().convert("RGB")
         pages.append(img)
-        pw, ph = img.size
-        corners = [img.getpixel(p) for p in ((0, 0), (pw - 1, 0), (0, ph - 1), (pw - 1, ph - 1))]
-        if any(c == (255, 255, 255) for c in corners):
-            problems.append(f"p{i}: sangria incompleta, canto branco em {corners}")
-        print(f"  p{i}: {w_mm:.3f} × {h_mm:.3f} mm · cantos {corners}")
+        desvio = bleed_gap(img)
+        if desvio > BLEED_TOLERANCE:
+            problems.append(
+                f"p{i}: sangria incompleta — a cor do canto difere do fundo em {desvio} "
+                "(o fundo não chega à borda da página)"
+            )
+        print(f"  p{i}: {w_mm:.3f} × {h_mm:.3f} mm · desvio de sangria {desvio}")
 
     if problems:
         sys.exit("FALHOU:\n  " + "\n  ".join(problems))

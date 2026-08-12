@@ -1,45 +1,76 @@
 # Cartões de visita SA·TECH
 
-Cartões de frente e verso para Isabelle, Marcelo e Iohana, seguindo o manual de
-marca (`../SA-Tech-Design-System.docx`).
+Cartões de frente e verso para Isabelle, Marcelo e Iohana, em **preto e branco**,
+seguindo o manual de marca (`../SA-Tech-Design-System.docx`).
 
-- **Frente**: fundo em Azul SA Tech com texto branco e acento em Magenta — a
-  aplicação que o manual descreve na seção 7 para peças de destaque. O magenta
-  entra como brilho no canto superior e na régua sob o nome, ficando na faixa de
-  10% da regra 60‑30‑10.
-- **Verso**: gradiente de marca na diagonal de 45°, com a logo sozinha no centro.
+- **Frente**: papel branco, logo e nome em tinta escura, contatos e legendas em
+  cinza, malha discreta ao fundo.
+- **Verso**: fundo cinza-branco com o **QR code** da landing page à esquerda e a
+  logo com uma chamada curta à direita.
 - **Tipografia**: Poppins Bold nos nomes e Inter nos contatos e legendas, como
-  manda a seção 4.
-- **Cores**: convertidas para os equivalentes mais próximos que a impressão em
-  CMYK alcança — veja a seção *Cores* abaixo.
+  manda a seção 4 do manual.
+- **Uma tinta só**: todos os tons são cinzas neutros, então o cartão imprime em
+  preto puro — o caminho mais barato. Detalhes na seção *Cores*.
 
-A logo usada é a **versão reversa (branca)** do logotipo oficial — a mesma que o
-manual de marca (`../SA-Tech-Design-System.docx`, seção 2) prevê para fundos
-escuros. Ela foi extraída da arte colorida do manual: o fundo claro virou
-transparente e a tinta virou branca, preservando o traçado de circuito do símbolo,
-a órbita e os pontos. O arquivo está em `logo-sa-tech-branca.png` (PNG com
-transparência, 1054 × 483 px).
+Esta é a **versão monocromática** que o manual prevê na seção 2 ("100% tinta
+escura, para aplicações de baixo custo"). A versão colorida, com o azul e o
+magenta da marca, está no histórico do repositório (commit `9bfca26`) e pode ser
+retomada.
+
+![Frente e verso](preview.png)
+
+## Logo
+
+A logo é o logotipo oficial extraído da arte do manual: o fundo claro virou
+transparente e a tinta virou cinza neutro, preservando o traçado de circuito do
+símbolo, a órbita e os pontos. Há duas versões no repositório:
+
+- `logo-sa-tech-tinta.png` — cinza escuro, usada nestes cartões.
+- `logo-sa-tech-branca.png` — reversa branca, para fundos escuros.
 
 Regras do manual aplicadas:
 
-- **Tamanho mínimo em impresso: 3 cm de largura.** Frente com 30 mm, verso com 46 mm.
+- **Tamanho mínimo em impresso: 3 cm de largura.** Frente com 30 mm, verso com 36 mm.
 - **Área de proteção** equivalente à altura da caixa alta do wordmark (4,1 mm na
-  frente, 6,2 mm no verso): nenhum elemento nem a linha de corte invade essa folga.
-- Reversa branca sobre fundo escuro/saturado — o manual proíbe a versão colorida
-  sobre o gradiente saturado, que é o caso do verso.
-- Sem sombra, contorno, distorção ou recolorização do gradiente do símbolo.
+  frente, 4,8 mm no verso): nenhum elemento nem a linha de corte invade essa folga.
+- Sem sombra, contorno, distorção ou recolorização.
 
-![Frente e verso](preview.png)
+## QR code
+
+Aponta para `https://sa-tech-welcome.vercel.app/` — a landing page do repositório,
+que já oferece WhatsApp de cada pessoa, site e LinkedIn. É a mesma URL do QR do
+pôster (`../qrcode-evento/gen_qr.py`).
+
+| Item | Valor |
+| --- | --- |
+| Correção de erro | Q (25%) — versão 4, 33 × 33 módulos |
+| Tamanho do código | 17,7 mm |
+| Módulo | 0,54 mm — bem acima do mínimo prático de 0,4 mm |
+| Zona de silêncio | 4,0 mm, contra os 2,2 mm (4 módulos) que a norma pede |
+| Formato | vetorial (SVG inline), não imagem — imprime nítido em qualquer escala |
+
+O QR fica dentro de um bloco branco com borda em cinza-linha — o componente "card"
+da seção 6 do manual. O bloco também garante a zona de silêncio: nada de escuro
+entra na área clara em volta do código.
+
+**Foi testado lendo o PDF final**, não o arquivo de origem: decodifica correto a
+300, 600 e 1200 dpi.
+
+> Se a landing page mudar de endereço, o QR precisa ser regerado — ele carrega a
+> URL, não um redirecionador. Vale considerar um encurtador próprio se o endereço
+> não for definitivo.
 
 ## Arquivos
 
 | Arquivo | Para que serve |
 | --- | --- |
 | `sa-tech-cartoes-visita.pdf` | **É o que vai para a gráfica.** 6 páginas, pronto para impressão. |
-| `cartao-visita.html` | Fonte editável. Fontes embutidas — abre igual em qualquer máquina, sem internet. |
-| `gerar-pdf.py` | Regera o PDF e o `preview.png` a partir do HTML. |
+| `cartao-visita.html` | Fonte editável. Fontes e logo embutidos — abre igual em qualquer máquina, sem internet. |
+| `gerar-pdf.py` | Regera o PDF e o `preview.png` a partir do HTML, com conferências. |
 | `preview.png` | Prévia da frente e do verso em 300 dpi. |
-| `logo-sa-tech-branca.png` | Logo oficial na versão reversa (branca), com transparência. |
+| `logo-sa-tech-tinta.png` | Logo em cinza escuro, com transparência. |
+| `logo-sa-tech-branca.png` | Logo reversa branca, para fundos escuros. |
+| `qr-code.svg` | O QR code em vetor, avulso, para reuso em outras peças. |
 
 ## Especificação para a gráfica
 
@@ -50,7 +81,7 @@ Regras do manual aplicadas:
 | Página do PDF | 96 × 56 mm (já com a sangria) |
 | Área de segurança | 5 mm a partir da linha de corte |
 | Páginas | 6 — pares frente/verso: 1‑2 Isabelle, 3‑4 Marcelo, 5‑6 Iohana |
-| Cores | RGB (converter para CMYK no fluxo da gráfica) — ver a nota sobre o azul abaixo |
+| Cores | **1 cor (preto)** — arquivo em escala de cinza, R=G=B em todos os pixels |
 | Marcas de corte | Não incluídas — a arte já vem com sangria, a gráfica aplica o corte |
 
 O verso é idêntico nos três cartões, então dá para fechar como **um verso único**
@@ -58,73 +89,55 @@ para toda a tiragem, se a gráfica cobrar por face.
 
 ### O que vale avisar na hora do orçamento
 
-- **Muita cobertura de tinta.** As duas faces são chapadas: frente em azul sólido
-  e verso em gradiente vivo. Em impressão digital barata isso costuma dar marcas
-  de rolete e banding no gradiente. Peça uma **prova impressa** antes de fechar a
-  tiragem.
-- **As cores já estão dentro do gamut CMYK.** Não há surpresa na conversão: a
-  arte inteira foi provada contra o PSO Coated v3 e o desvio máximo é ΔE 2.8
-  (detalhes na seção *Cores*). Ainda assim, peça a prova — ela serve para conferir
-  o gradiente e a cobertura, não a cor.
-- **Acabamento.** Laminação fosca disfarça marcas de dedo no fundo escuro e é a
-  escolha mais segura aqui. Verniz localizado sobre a logo do verso fica muito
-  bom, mas encarece.
+- **É um trabalho de uma cor.** Peça orçamento de 1×0 ou 1×1 (preto), não de
+  4×4 — a diferença de preço é grande. Se a gráfica só trabalhar em 4 cores, peça
+  que o preto saia **em K puro**, sem preto rico (sem apoio de ciano, magenta e
+  amarelo): em texto de 6–7 pt, o preto rico exige registro perfeito e qualquer
+  desvio borra as letras.
+- **Cobertura de tinta baixíssima.** Sem chapado escuro, sem gradiente. Não há o
+  risco de banding nem de marca de rolete que a versão colorida tinha, e a prova
+  impressa deixa de ser indispensável.
+- **Acabamento.** Sem fundo escuro, marca de dedo deixa de ser problema — laminação
+  passa a ser escolha estética, não necessidade. Se quiser um toque de acabamento,
+  relevo seco (baixo-relevo) na logo funciona bem em cartão monocromático.
 
-Papel sugerido: couché fosco 300 g ou 350 g.
+Papel sugerido: couché fosco 300 g ou 350 g. Como o cartão é claro, papel de alta
+alvura ajuda o contraste.
 
 ## Cores
 
-O manual define Azul SA Tech `#071C89` e Magenta SA Tech `#B910C3`. As duas são
-cores de tela e **não existem em CMYK** — nenhuma combinação de tinta chega nelas.
-Mandar esses valores para a gráfica significa deixar a conversão por conta dela e
-receber algo que ninguém escolheu.
+Todos os tons são **cinzas neutros** (R=G=B), de propósito: é isso que permite
+imprimir com uma tinta só. Os valores vêm dos neutros da seção 3 do manual,
+convertidos para o cinza de mesma luminosidade, e a porcentagem é a de tinta preta
+que os reproduz em couché (perfil PSO Coated v3 / FOGRA51).
 
-Então o cartão usa, para cada cor da marca, a cor imprimível mais próxima. A
-escolha foi feita por medição: busca no espaço CMYK pelo menor ΔE contra a cor do
-manual, usando o perfil **PSO Coated v3 (FOGRA51)**, que é o padrão para papel
-couché. O ISO Coated v2 300% (FOGRA39) dá praticamente o mesmo resultado.
+| Uso | Neutro do manual | Cinza usado | Tinta |
+| --- | --- | --- | --- |
+| Tinta — logo, nome, régua, ícones | `#191C21` | `#1C1C1C` | **K 100%** |
+| Cinza secundário — contatos e legendas | `#5B6472` | `#646464` | **K 77%** |
+| Cinza linha — malha e borda do bloco | `#D9DCE3` | `#DCDCDC` | **K 19%** |
+| Cinza-branco — fundo do verso | `#F5F4F9` | `#F4F4F4` | **K 6%** |
+| Papel — fundo da frente | `#FFFFFF` | `#FFFFFF` | K 0% |
 
-| Cor do manual | Receita de tinta | Fica | Tinta | ΔE |
-| --- | --- | --- | --- | --- |
-| Azul SA Tech `#071C89` | **C100 M100 Y0 K0** | `#3A3586` | 200% | 21,7 |
-| Magenta SA Tech `#B910C3` | **C40 M100 Y0 K0** | `#A42783` | 140% | 34,4 |
-| Gradiente, início `#0B1B72` | **C100 M100 Y0 K0** | `#3A3586` | 200% | 13,5 |
-| Gradiente, fim `#A31DBF` | **C55 M100 Y0 K0** | `#8B2C84` | 155% | 32,1 |
-
-Tons auxiliares, derivados do azul: escurecimento das bordas **C100 M100 Y0 K40**
-(`#312D63`) e o topo do gradiente do fundo **C90 M90 Y0 K0** (`#473E8D`).
-
-O ΔE alto do magenta é inevitável: `#B910C3` é um roxo-magenta muito saturado, e
-CMYK simplesmente não chega lá. Se esse magenta exato for inegociável, o caminho
-é uma **cor especial (Pantone)** como quinta tinta — o que muda o orçamento.
-
-**A régua sob o nome é a exceção.** O magenta imprimível (`#A42783`) tem contraste
-de só 1,6:1 contra o azul de fundo: impresso, o traço sumiria. Ela usa
-**C20 M80 Y0 K0** (`#C85398`), um magenta mais claro, que sobe o contraste para
-2,5:1 e deixa o traço visível. É uma escolha de legibilidade, não de fidelidade.
+Uma coisa que vale saber antes de ver o cartão impresso: **K 100% em couché tem
+L\* 17,5**, o que na tela equivale a mais ou menos `#2B2B2B`. Ou seja, o "preto" do
+cartão vai parecer um grafite bem escuro, não o preto absoluto de um monitor. Isso é
+o limite de uma tinta preta sobre papel, não um problema do arquivo — a tinta do
+manual (`#191C21`, L\* 10,2) é mais escura do que uma tinta só alcança. Preto rico
+chegaria mais fundo, mas custa o registro do texto pequeno.
 
 ### Verificações
 
-- **Gamut**: prova da arte inteira contra o PSO Coated v3 — desvio médio ΔE 1,4 e
-  máximo 2,8 na frente; 0,8 e 1,9 no verso. Na prática, o que está na tela é o que
-  sai impresso.
-- **Cobertura de tinta**: máximo de 218% na frente e 202% no verso, com folga
-  larga para o limite de 300% do couché.
-- **Contraste**, medido sobre o fundo já composto: nome em branco a 10,2:1,
-  contatos a 7,4:1, legendas a 5,4:1 — todos acima do mínimo de acessibilidade
-  para texto pequeno. A régua magenta fica em 2,5:1, suficiente para um traço
-  cheio.
+Todas medidas no PDF final, não no arquivo de origem:
 
-### Sobre entregar em CMYK
-
-O PDF sai em RGB de propósito. A conversão para CMYK é melhor feita pela gráfica,
-com o perfil da máquina e do papel dela. Como as cores já estão dentro do gamut,
-essa conversão é praticamente sem perda — e a tabela acima diz exatamente que
-tinta cada cor deve virar, então dá para conferir o resultado.
-
-Se a gráfica exigir o arquivo já em CMYK, peça — não converta com ferramenta
-genérica. O Ghostscript, por exemplo, ignora o perfil informado e contamina o azul
-com 11% de amarelo, sujando a cor.
+- **Neutralidade**: desvio máximo de R=G=B igual a **zero** em todos os pixels das
+  duas faces. O arquivo é genuinamente escala de cinza.
+- **Contraste**: tinta sobre branco a 17,0:1; cinza secundário sobre branco a
+  5,9:1; cinza secundário sobre o cinza-branco do verso a 5,4:1. Todos acima do
+  mínimo de acessibilidade para texto pequeno.
+- **Margens**: o conteúdo da frente fica a 4,9 mm da linha de corte; o do verso, a
+  11 mm.
+- **QR**: decodifica a 300, 600 e 1200 dpi, com zona de silêncio de 4,0 mm.
 
 ## Como editar
 
@@ -153,9 +166,8 @@ a SIL Open Font License — uso comercial e incorporação liberados. Vão embut
 base64 no HTML, então o arquivo abre igual em qualquer máquina e o PDF não
 depende de nenhuma fonte instalada na gráfica.
 
-Uma observação: os ícones de contato são brancos, inclusive o do WhatsApp. O verde
-da plataforma não existe na paleta, e sobre o azul sólido o branco é o equivalente
-ao "Azul SA Tech como padrão" que o manual define para fundos claros.
+Os ícones de contato são monocromáticos, inclusive o do WhatsApp — em um cartão de
+uma cor não há verde, e a forma do ícone já é reconhecível.
 
 ## Regerar o PDF
 
@@ -165,6 +177,6 @@ python3 gerar-pdf.py
 ```
 
 O script imprime o HTML pelo Chromium, recorta a página para 96 × 56 mm exatos e
-confere, página por página, se a medida bate e se a sangria chega aos quatro
-cantos. Se algo sair fora do esperado, ele falha com o motivo em vez de gerar um
-PDF silenciosamente errado.
+confere, página por página, se a medida bate e se o fundo chega às quatro bordas.
+Se algo sair fora do esperado, ele falha com o motivo em vez de gerar um PDF
+silenciosamente errado.
